@@ -73,6 +73,38 @@ router.route('/bears/:bear_id')
 				res.send(err);
 			res.json(bear);
 		});
+	})
+
+	.put(function(req, res) {
+		
+		//use the bear model to find the bear I want to change
+		Bear.findById(req.params.bear_id, function(err, bear) {
+				if (err)
+					res.send(err);
+				
+				bear.name = req.body.name;	//updates the bears information
+				
+				//save the bear LOL
+				bear.save(function(err) {
+					if (err)
+						res.send(err);
+
+				res.json({ message: 'Bear updated!' });
+				});
+			});
+	})
+
+	// delete the bear with specific id
+	
+	.delete(function(req, res) {
+		Bear.remove({
+			_id: req.params.bear_id
+		}, function(err, bear) {
+			if (err)
+				res.send(err);
+
+			res.json({ message: 'Successfully deleted!' });
+		});
 	});
 
 
