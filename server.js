@@ -7,10 +7,9 @@ var app		= express();		//defines our app using express
 var bodyParser	= require('body-parser');
 
 var mongoose 	= require('mongoose');
-//mongoose.connect('mongodb://lsteffen:1234@localhost:27017/admin');
 mongoose.connect('mongodb://lsteffen:1234@ds011248.mongolab.com:11248/lsteffen');
 
-var Bear	= require('./app/models/bear');		//this is where the schema and model are defined, so by pointing it here I get the app pointing to it
+var Place	= require('./app/models/place');		//this is where the schema and model are defined, so by pointing it here I get the app pointing to it
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -38,68 +37,68 @@ router.get('/', function(req, res) {
 
 // more routes for our API will be here
 
-// routes that end in /bears
-router.route('/bears')
-	//creates a bear (POST http://<local>:<port>/api/bears)
+// routes that end in /places
+router.route('/places')
+	//creates a place (POST http://<local>:<port>/api/places)
 	.post(function(req, res) {
 		
-		var bear = new Bear(); 		// creates a new instance of the Bear model obj
-		bear.name = req.body.name;	// sets the bear name to the name comming from the request body
+		var place = new Place(); 		// creates a new instance of the Place model obj
+		place.name = req.body.name;	// sets the place name to the name comming from the request body
 		
-		// saves the bear and validates it for error
-		bear.save(function(err) {
+		// saves the place and validates it for error
+		place.save(function(err) {
 			if (err)
 				res.send(err);
 
-			res.json({ message: 'Bear created!' });
+			res.json({ message: 'Place created!' });
 		});
 	})	
 
 	.get(function(req, res) {
-		Bear.find(function(err, bears) {
+		Place.find(function(err, places) {
 			if (err)
 				res.send(err);
 			
-			res.json(bears);
+			res.json(places);
 		});
 	});
 
-router.route('/bears/:bear_id')
-	// get the bear with specific ID
+router.route('/places/:place_id')
+	// get the place with specific ID
 	//
 	.get(function(req, res){
-		Bear.findById(req.params.bear_id, function(err, bear) {
+		Place.findById(req.params.place_id, function(err, place) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			res.json(place);
 		});
 	})
 
 	.put(function(req, res) {
 		
-		//use the bear model to find the bear I want to change
-		Bear.findById(req.params.bear_id, function(err, bear) {
+		//use the place model to find the place I want to change
+		Place.findById(req.params.place_id, function(err, place) {
 				if (err)
 					res.send(err);
 				
-				bear.name = req.body.name;	//updates the bears information
+				place.name = req.body.name;	//updates the places information
 				
-				//save the bear LOL
-				bear.save(function(err) {
+				//save the place
+				place.save(function(err) {
 					if (err)
 						res.send(err);
 
-				res.json({ message: 'Bear updated!' });
+				res.json({ message: 'Place updated!' });
 				});
 			});
 	})
 
-	// delete the bear with specific id
+	// delete the place with specific id
 	
 	.delete(function(req, res) {
-		Bear.remove({
-			_id: req.params.bear_id
-		}, function(err, bear) {
+		Place.remove({
+			_id: req.params.place_id
+		}, function(err, place) {
 			if (err)
 				res.send(err);
 
