@@ -24,15 +24,17 @@ var port = process.env.PORT || 8080;	//set our port
 var router = express.Router();		// gets an instance or the express Router
 
 //middleware to use for all requests
-router.use(function(req, res, next) {
-	//do logging
-	console.log('Shomething is happening here, this is the middleware speaking.');
-	next(); //next() is to make sure we go to the next routes and don't get stuck here
-});
+//router.use(function(req, res, next) {
+//	//do logging
+//	console.log('Shomething is happening here, this is the middleware speaking.');
+//	next(); //next() is to make sure we go to the next routes and don't get stuck here
+//});
+
+app.use(express.static('app/public'));
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-	res.json({ message: 'horray! welcome to our api!' });
+	res.sendfile(__dirname + '/app/public/index.html');
 });
 
 // more routes for our API will be here
@@ -58,7 +60,7 @@ router.route('/places')
 		Place.find(function(err, places) {
 			if (err)
 				res.send(err);
-			
+
 			res.json(places);
 		});
 	});
@@ -109,7 +111,7 @@ router.route('/places/:place_id')
 
 // REGISTER OUR ROUTES ---------
 // all of our routes will prefix /api
-app.use('/api', router);
+app.use('/', router);
 
 // START SERVER
 // ==================
