@@ -41,7 +41,7 @@ router.get('/', function(req, res) {
 
 // routes that end in /places
 router.route('/places')
-	//creates a place (POST http://<local>:<port>/api/places)
+	//creates a place (POST http://<local>:<port>/places)
 	.post(function(req, res) {
 		
 		var place = new Place(); 		// creates a new instance of the Place model obj
@@ -51,7 +51,6 @@ router.route('/places')
 		place.save(function(err) {
 			if (err)
 				res.send(err);
-
 			res.json({ message: 'Place created!' });
 		});
 	})	
