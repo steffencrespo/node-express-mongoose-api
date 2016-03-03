@@ -103,6 +103,8 @@ router.route('/places/:place_id')
 			if (err)
 				res.send(err);
 
+			place.id = req.body._id;
+
 			res.json({ message: 'Successfully deleted!' });
 		});
 	});

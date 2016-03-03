@@ -13,6 +13,22 @@ $(function(){
         $('.place-list').append(list);
     }
 
+    $('.place-list').on('click', 'a[place-block]', function(event){
+        if (!confirm("Do you want to delete the place?")){
+            return false;
+        }
+
+        var target = $(event.currentTarget);
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/places/'+target.data('place')
+        }).done(function(){
+            target.parents('li').remove();
+        });
+
+    });
+
     $('form').on('submit', function(event){
         event.preventDefault();
         var form = $(this);
