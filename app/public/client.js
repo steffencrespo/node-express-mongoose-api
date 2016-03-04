@@ -6,8 +6,8 @@ $(function(){
         var list = [];
         for (var i in places){
             place = places[i];
-            content = '<a href="/places/'+place+'">'+place.name+'</a> '+
-                '<a href="#" place-block="'+place+'"><img src="delete.jpg" height="10" width="10"></a>';
+            content = '<a href="/places/'+place._id+'">'+place.name+'</a> '+
+                '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" height="10" width="10"></a>';
             list.push($('<li>', {html: content}));
         }
         $('.place-list').append(list);
@@ -19,10 +19,11 @@ $(function(){
         }
 
         var target = $(event.currentTarget);
-
+        var targetAttr = $(event.currentTarget.attributes['place-block']);
+        var request = target.attr('place-block');
         $.ajax({
             type: 'DELETE',
-            url: '/places/'+target.data('place')
+            url: '/places/'+request
         }).done(function(){
             target.parents('li').remove();
         });

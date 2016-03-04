@@ -102,7 +102,7 @@ router.route('/places/:place_id')
 		}, function(err, place) {
 			if (err)
 				res.send(err);
-
+			debugger;
 			place.id = req.body._id;
 
 			res.json({ message: 'Successfully deleted!' });
