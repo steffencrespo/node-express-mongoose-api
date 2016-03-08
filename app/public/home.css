@@ -16,6 +16,11 @@ h1 {
 }
 
 #new-place input[name="name"] {
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+#new-place input[name="address"] {
   width: 200px;
 }
 

@@ -43,17 +43,18 @@ router.get('/', function(req, res) {
 router.route('/places')
 	//creates a place (POST http://<local>:<port>/places)
 	.post(function(req, res) {
-		
+
 		var place = new Place(); 		// creates a new instance of the Place model obj
 		place.name = req.body.name;	// sets the place name to the name comming from the request body
-		
+		place.address = req.body.address;
+
 		// saves the place and validates it for error
 		place.save(function(err) {
 			if (err)
 				res.send(err);
 			res.json({ message: 'Place created!' });
 		});
-	})	
+	})
 
 	.get(function(req, res) {
 		Place.find(function(err, places) {
@@ -76,14 +77,14 @@ router.route('/places/:place_id')
 	})
 
 	.put(function(req, res) {
-		
+
 		//use the place model to find the place I want to change
 		Place.findById(req.params.place_id, function(err, place) {
 				if (err)
 					res.send(err);
-				
+
 				place.name = req.body.name;	//updates the places information
-				
+
 				//save the place
 				place.save(function(err) {
 					if (err)
@@ -95,7 +96,7 @@ router.route('/places/:place_id')
 	})
 
 	// delete the place with specific id
-	
+
 	.delete(function(req, res) {
 		Place.remove({
 			_id: req.params.place_id
@@ -118,7 +119,3 @@ app.use('/', router);
 // ==================
 app.listen(port);
 console.log('Now serving...port '+ port);
-
-
-
-
