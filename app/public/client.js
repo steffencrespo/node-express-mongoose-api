@@ -30,11 +30,11 @@ $(function(){
     });
 
     $('.place-list').on('mouseenter', 'a[place-block]', function(){
-      $(this).find('img').css({'width':'20px'});
+      $(this).find('img').animate({'width':'20px'}, 'fast');
     });
 
     $('.place-list').on('mouseleave', 'a[place-block]', function(){
-      $(this).find('img').css({'width':'10px'});
+      $(this).find('img').animate({'width':'10px'}, 'slow');
     });
 
     $('form').on('submit', function(event){
