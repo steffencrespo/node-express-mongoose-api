@@ -7,7 +7,7 @@ $(function(){
         for (var i in places){
             place = places[i];
             content = '<a href="/places/'+place._id+'">'+place.name+'</a> '+
-                '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" height="10" width="10"></a>';
+                '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a>';
             list.push($('<li>', {html: content}));
         }
         $('.place-list').append(list);
@@ -27,6 +27,14 @@ $(function(){
             target.parents('li').remove();
         });
 
+    });
+
+    $('.place-list').on('mouseenter', 'a[place-block]', function(){
+      $(this).find('img').css({'width':'20px'});
+    });
+
+    $('.place-list').on('mouseleave', 'a[place-block]', function(){
+      $(this).find('img').css({'width':'10px'});
     });
 
     $('form').on('submit', function(event){
