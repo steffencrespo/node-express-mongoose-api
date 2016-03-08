@@ -1,0 +1,15 @@
+h1 {
+  background-color: #660000;
+  color: #FFFFFF;
+  margin-top: auto;
+  border: double;
+}
+
+#new-place {
+  margin-top: auto;
+  border-top: double;
+}
+
+.place-list li {
+  list-style: none;
+}

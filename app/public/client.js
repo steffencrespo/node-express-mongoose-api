@@ -19,7 +19,6 @@ $(function(){
         }
 
         var target = $(event.currentTarget);
-        var targetAttr = $(event.currentTarget.attributes['place-block']);
         var request = target.attr('place-block');
         $.ajax({
             type: 'DELETE',
