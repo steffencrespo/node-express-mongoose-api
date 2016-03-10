@@ -16,6 +16,7 @@ $(function(){
 //  this event is going to be trigger the new block with the place details instead of opening new page
 //  also need to change the elements, don't think it I want the places to be links anymore
     $('.place-list').on('click', '.place-details', function(event) {
+      event.preventDefault();
       var target = $(event.currentTarget);
       var request = target.attr('href');
       $.ajax({
