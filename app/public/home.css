@@ -27,6 +27,7 @@ h1 {
 .place-list li {
   list-style: none;
   margin-bottom: 14px;
+  margin-left: 14px;
 }
 
 .place-list li a {
@@ -39,6 +40,10 @@ h1 {
 }
 
 .place-details {
-  display: inline;
-  border: 1px solid gray;
+  height: 100px;
+  width: 90px;
+  float: left;
+  border: 1px solid #660000;
+  margin-bottom: 14px;
+  margin-left: 14px;
 }
