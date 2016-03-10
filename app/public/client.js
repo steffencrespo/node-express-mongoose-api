@@ -6,14 +6,27 @@ $(function(){
         var list = [];
         for (var i in places){
             place = places[i];
-            content = '<a href="/places/'+place._id+'">'+place.name+'</a> '+
+            content = '<a class="place-details" href="/places/'+place._id+'">'+place.name+'</a> '+
                 '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a>';
             list.push($('<li>', {html: content}));
         }
         $('.place-list').append(list);
     }
 
-    $('.place-list').on('click', 'a[place-block]', function(event){
+//  this event is going to be trigger the new block with the place details instead of opening new page
+//  also need to change the elements, don't think it I want the places to be links anymore
+    $('.place-list').on('click', '.place-details', function(event) {
+      var target = $(event.currentTarget);
+      var request = target.attr('href');
+      $.ajax({
+        type: 'GET',
+        url: request
+      }).done(function() {
+        alert("clicked" + request);
+      });
+    })
+
+    $('.place-list').on('click', 'a[place-block]', function(event) {
         if (!confirm("Do you want to delete the place?")){
             return false;
         }
