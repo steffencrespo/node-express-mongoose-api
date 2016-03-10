@@ -6,8 +6,8 @@ $(function(){
         var list = [];
         for (var i in places){
             place = places[i];
-            content = '<a class="place-details" href="/places/'+place._id+'">'+place.name+'</a> '+
-                '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a>';
+            content = '<p class="place-details"><a href="/places/'+place._id+'">'+place.name+'</a> '+
+                '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a></p>';
             list.push($('<li>', {html: content}));
         }
         $('.place-list').append(list);

@@ -26,15 +26,19 @@ h1 {
 
 .place-list li {
   list-style: none;
-
+  margin-bottom: 14px;
 }
 
 .place-list li a {
   text-decoration: none;
-
 }
 
 .place-list li a img {
   height: 10px;
   width: 10px;
+}
+
+.place-details {
+  display: inline;
+  border: 1px solid gray;
 }
