@@ -7,7 +7,7 @@ h1 {
 
 #new-place {
   margin-top: auto;
-  border-top: double;
+  border: double;
 }
 
 #new-place legend {
