@@ -6,9 +6,10 @@ $(function(){
         var list = [];
         for (var i in places){
             place = places[i];
-            content = '<p class="place-details"><a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a> '+
-                '<a href="/places/'+place._id+'">'+place.name+'</a></p>';
-            list.push($('<li>', {html: content}));
+            placeBlockAnchor = '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a> ';
+            placeNameAnchor = '<a href="/places/'+place._id+'">'+place.name+'</a></p>';
+            paragraph = '<p class="place-details">' + placeBlockAnchor + placeNameAnchor + '</p>';
+            list.push($('<li>', {html: paragraph}));
         }
         $('.place-list').append(list);
     }
