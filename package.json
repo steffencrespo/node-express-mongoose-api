@@ -5,5 +5,10 @@
 		"express": "~4.0.0",
 		"mongoose": "~4.4.3",
 		"body-parser": "~1.0.1"
+	},
+	"dev-dependencies": {
+		"mocha": "~2.4.5",
+		"supertest": "~3.7.2",
+		"should": "latest"
 	}
 }
