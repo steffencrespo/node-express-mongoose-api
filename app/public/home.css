@@ -47,3 +47,10 @@ h1 {
   margin-bottom: 14px;
   margin-left: 14px;
 }
+
+.place-details-bar {
+  position: relative;
+  width: inherit;;
+  height: 20px;
+  border: 3px solid #73AD21;
+}
