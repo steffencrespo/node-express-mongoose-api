@@ -1,6 +1,6 @@
 {
 	"name": "node-api",
-	"main": "server.js",
+	"main": "app.js",
 	"dependencies": {
 		"express": "~4.0.0",
 		"mongoose": "~4.4.3",

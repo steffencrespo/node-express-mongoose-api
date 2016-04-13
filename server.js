@@ -1,25 +1,10 @@
-//BASE SETUP
-
 // call packages we need
 var express	= require('express');	//calls the express fwk
-var app		= express();		//defines our app using express
-var bodyParser	= require('body-parser');
-
-var mongoose 	= require('mongoose');
-mongoose.connect('mongodb://lsteffen:1234@ds011248.mongolab.com:11248/lsteffen');
 
 var Place	= require('./app/models/place');		//this is where the schema and model are defined, so by pointing it here I get the app pointing to it
 
-// configure app to use bodyParser()
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;	//set our port
-
 // ROUTES FOR OUR API
 var router = express.Router();		// gets an instance or the express Router
-
-app.use(express.static('app/public'));
 
 router.get('/', function(req, res) {
 	res.sendfile(__dirname + '/app/public/index.html');
@@ -89,10 +74,4 @@ router.route('/places/:place_id')
 		});
 	});
 
-
-// REGISTER OUR ROUTES ---------
-app.use('/', router);
-
-// START SERVER
-app.listen(port);
-console.log('Now serving...port '+ port);
+	module.exports = router;
