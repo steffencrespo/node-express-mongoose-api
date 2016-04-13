@@ -14,7 +14,7 @@ app.use(express.static('app/public'));
 
 // REGISTER OUR ROUTES ---------
 // app.use('/', require('./server'));
-var server = require('./server');
+var server = require('./app/controllers/places');
 app.use('/', server);
 
 // START SERVER

@@ -1,7 +1,7 @@
 // call packages we need
 var express	= require('express');	//calls the express fwk
 
-var Place	= require('./app/models/place');		//this is where the schema and model are defined, so by pointing it here I get the app pointing to it
+var Place	= require('../models/place');		//this is where the schema and model are defined, so by pointing it here I get the app pointing to it
 
 // ROUTES FOR OUR API
 var router = express.Router();		// gets an instance or the express Router
