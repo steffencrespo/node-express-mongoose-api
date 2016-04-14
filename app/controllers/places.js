@@ -35,7 +35,6 @@ router.route('/places')
 
 router.route('/places/:place_id')
 	// get the place with specific ID
-	//
 	.get(function(req, res){
 		Place.findById(req.params.place_id, function(err, place) {
 			if (err)

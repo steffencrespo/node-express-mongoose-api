@@ -6,7 +6,7 @@ $(function(){
         var list = [];
         for (var i in places){
             place = places[i];
-            placeBlockAnchor = '<a href="#" place-block="'+place._id+'"><img src="delete.jpg" alt="delete this place"></a> ';
+            placeBlockAnchor = '<a href="#" place-block="'+place._id+'"><img src="./img/delete.jpg" alt="delete this place"></a> ';
             placeNameAnchor = '<a href="/places/'+place._id+'">'+place.name+'</a>';
             paragraph = '<div class="place-details">' + placeBlockAnchor + placeNameAnchor + '<div class="place-details-bar"> </div></div>';
             list.push($('<li>', {html: paragraph}));
